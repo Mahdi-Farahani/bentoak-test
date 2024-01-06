@@ -90,25 +90,6 @@ export default function NavBar({ window, user }: NavbarProps) {
 						BenToak Test
 					</Typography>
 					<Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-						{/* {currentView.map(({ id, title, path }) => (
-							<ListItem key={id} disablePadding>
-								<ListItemButton sx={{ textAlign: 'center' }}>
-									<Link
-										sx={{
-											paddingX: '10px',
-											textDecoration: 'none',
-											borderRadius: 4,
-										}}
-										href={path}
-										color={'#000000'}
-										bgcolor={'#f08484'}
-									>
-										<ListItemText primary={title} />
-									</Link>
-								</ListItemButton>
-							</ListItem>
-						))} */}
-
 						{isAuth && (
 							<Button onClick={logOut} variant="contained" color="info">
 								LogOut

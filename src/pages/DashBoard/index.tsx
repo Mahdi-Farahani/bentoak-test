@@ -33,12 +33,6 @@ const DashBoard: React.FC = () => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-	useEffect(() => {
-		if (!isAuthenticated) {
-			navigate('/');
-		}
-	}, [isAuthenticated, navigate]);
-
 	const drawerItems: DrawerItem[] = [
 		{ text: 'Dashboard', icon: <DashboardIcon />, path: '/dashBoard' },
 		{ text: 'Products', icon: <ProductIcon />, path: '/dashBoard/products' },
@@ -59,6 +53,7 @@ const DashBoard: React.FC = () => {
 	return (
 		<>
 			<NavBar user={{ AuthStatus: isAuthenticated }} />
+
 			<IconButton
 				color="inherit"
 				aria-label="open drawer"
@@ -68,6 +63,7 @@ const DashBoard: React.FC = () => {
 			>
 				<MenuIcon />
 			</IconButton>
+
 			<Drawer
 				variant={isMobile ? 'temporary' : 'permanent'}
 				open={drawerOpen}
