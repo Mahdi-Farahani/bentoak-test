@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
 	Drawer,
@@ -34,9 +34,9 @@ const DashBoard: React.FC = () => {
 	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
 	const drawerItems: DrawerItem[] = [
-		{ text: 'Dashboard', icon: <DashboardIcon />, path: '/dashBoard' },
-		{ text: 'Products', icon: <ProductIcon />, path: '/dashBoard/products' },
-		{ text: 'Charts', icon: <ChartIcon />, path: '/dashBoard/charts' },
+		{ text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
+		{ text: 'Products', icon: <ProductIcon />, path: '/dashboard/products' },
+		{ text: 'Charts', icon: <ChartIcon />, path: '/dashboard/charts' },
 	];
 
 	const handleNavigation = (path: string): void => {
@@ -73,6 +73,7 @@ const DashBoard: React.FC = () => {
 				<List>
 					{drawerItems.map((item) => (
 						<ListItem
+							button
 							key={item.text}
 							onClick={() => handleNavigation(item.path)}
 						>

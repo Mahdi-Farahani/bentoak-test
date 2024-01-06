@@ -9,8 +9,7 @@ function App() {
 		| 'unAuth';
 
 	useEffect(() => {
-		console.log(isAuthenticated, 'isAuthenticated');
-		if (isAuthenticated === null) {
+		if (!isAuthenticated) {
 			navigate('/signIn');
 		}
 	}, [isAuthenticated, navigate]);
