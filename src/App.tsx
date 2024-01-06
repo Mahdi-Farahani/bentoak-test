@@ -1,20 +1,37 @@
-import { useEffect } from 'react';
 import NavBar from './components/Navbar';
-import { useNavigate } from 'react-router-dom';
+import { Typography, Link } from '@mui/material';
 
 function App() {
-	const navigate = useNavigate();
 	const isAuthenticated = localStorage.getItem('authorized') as
 		| 'auth'
 		| 'unAuth';
 
-	useEffect(() => {
-		if (!isAuthenticated) {
-			navigate('/signIn');
-		}
-	}, [isAuthenticated, navigate]);
-
-	return <NavBar user={{ AuthStatus: isAuthenticated }} />;
+	return (
+		<>
+			<NavBar user={{ AuthStatus: isAuthenticated }} />
+			<div
+				style={{
+					marginTop: '10rem',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					flexDirection: 'column',
+				}}
+			>
+				{isAuthenticated ? (
+					<>
+						<Typography variant="h5">You are Signed In Successfully</Typography>
+						<Link href="/dashboard">Go To your DashBoard</Link>
+					</>
+				) : (
+					<>
+						<Typography variant="h5">Please Sign In</Typography>
+						<Link href="/signIn">SignIn</Link>
+					</>
+				)}
+			</div>
+		</>
+	);
 }
 
 export default App;

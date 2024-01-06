@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function NavBar({ window, user }: NavbarProps) {
 	const navigate = useNavigate();
+	const isAuth = localStorage.getItem('authorized');
 
 	const views = {
 		auth: pages,
@@ -37,11 +38,11 @@ export default function NavBar({ window, user }: NavbarProps) {
 	const logOut = () => {
 		localStorage.removeItem('authorized');
 		localStorage.removeItem('user');
-		navigate('/');
+		navigate('/signIn');
 	};
 
 	const drawer = (
-		<Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+		<Box onClick={handleDrawerToggle}>
 			<Typography variant="h6" sx={{ my: 2 }}>
 				BenToak Test
 			</Typography>
@@ -61,13 +62,17 @@ export default function NavBar({ window, user }: NavbarProps) {
 						</ListItemButton>
 					</ListItem>
 				))}
+				{isAuth && (
+					<Button onClick={logOut} sx={{ paddingX: '36px' }}>
+						LogOut
+					</Button>
+				)}
 			</List>
 		</Box>
 	);
 
 	const container =
 		window !== undefined ? () => window().document.body : undefined;
-	const isAuth = localStorage.getItem('authorized');
 	return (
 		<Box sx={{ display: 'flex' }}>
 			<CssBaseline />

@@ -32,7 +32,7 @@ export default function Login() {
 				enteredPassword === storedUser.password
 			) {
 				localStorage.setItem('authorized', 'auth');
-				navigate('/dashboard');
+				navigate('/');
 			} else {
 				alert('Invalid credentials. Please try again.');
 				console.log('Invalid credentials. Please try again.');
