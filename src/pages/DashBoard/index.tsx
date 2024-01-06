@@ -77,7 +77,6 @@ const DashBoard: React.FC = () => {
 				<List>
 					{drawerItems.map((item) => (
 						<ListItem
-							button
 							key={item.text}
 							onClick={() => handleNavigation(item.path)}
 						>
